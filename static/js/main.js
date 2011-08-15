@@ -1,3 +1,14 @@
+/*
+ * jQuery Show
+ * Simple jQuery Show
+ *
+ * Aymeric Gallissot
+ * http://aymericgallissot.fr
+ *
+ * https://github.com/plougy/jquery-show
+ */
+
+
 $(function() {
 
 	
