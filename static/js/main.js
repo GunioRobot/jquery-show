@@ -13,19 +13,22 @@ $(function() {
 
 	
 	var thumb = $("#images-thumb a"),
-		thumbCount = $("#images-thumb a").size();
+		thumbCount = $("#images-thumb a").size(),
+		overlay = $("#overlay"),
 		show = $("#show"),
 		showClose = $("#show .close button"),
 		showPrev = $("#show .prev"),
-		showNext = $("#show .next");
+		showNext = $("#show .next"),
 		showPrevBtn = $("#show .prev button"),
 		showNextBtn = $("#show .next button");
 		
 	thumb.click(function(){
 		index = $(this).index();
 		
+		overlay.show();
+		
 		thumb.addClass("opacity");
-		thumb.children(".title").hide();
+		
 		
 		var imageUrl = $(this).attr("href");
 
@@ -63,13 +66,13 @@ $(function() {
 	
 	
 	
-	thumb.hover(function(){		
-		if($(this).hasClass("opacity") == false){
-			$(this).children(".title").show();
-		}
-	},function(){
-			$(this).children(".title").hide();
-	});
+	//thumb.hover(function(){		
+	//	if($(this).hasClass("opacity") == false){
+	//		$(this).children(".title").show();
+	//	}
+	//},function(){
+	//		$(this).children(".title").hide();
+	//});
 	
 	
 
@@ -144,6 +147,7 @@ $(function() {
 	
 	
 	showClose.click(function(){
+		overlay.hide();
 		show.hide();
 		showPrev.show();
 		showNext.show();
