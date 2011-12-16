@@ -11,7 +11,7 @@
 
 $(function() {
 
-	
+
 	var thumb = $("#images-thumb a"),
 		thumbCount = $("#images-thumb a").size(),
 		overlay = $("#overlay"),
@@ -21,74 +21,74 @@ $(function() {
 		showNext = $("#show .next"),
 		showPrevBtn = $("#show .prev button"),
 		showNextBtn = $("#show .next button");
-		
+
 	thumb.click(function(){
 		index = $(this).index();
-		
+
 		overlay.show();
-		
+
 		thumb.addClass("opacity");
-		
-		
+
+
 		var imageUrl = $(this).attr("href");
 
 		$("<img/>").attr("src", imageUrl).load(function(){
 			imageWidth = this.width;
 			imageHeight = this.height;
-			
+
 			//marginTopBottom = Math.floor(imageHeight / 2);
 			marginLeftRight = Math.floor(imageWidth / 2);
 			marginTopPrevNext = Math.floor((imageHeight / 2) - (30 / 2));
-			
+
 			show.css("width", imageWidth + "px");
 			show.css("height", imageHeight + "px");
 			show.css("margin-left", "-" + marginLeftRight + "px");
 			show.css("margin-right", "-" + marginLeftRight + "px");
 			show.css("background", "url("+imageUrl+") no-repeat top center");
-			
+
 			showPrevBtn.css("margin-top", marginTopPrevNext + "px");
 			showNextBtn.css("margin-top", marginTopPrevNext + "px");
-			
-			show.show();			
+
+			show.show();
 		});
-		
-		
+
+
 		if(index == 0){
 			showPrev.hide();
 		}
-		
+
 		if(index == thumbCount-1){
 			showNext.hide();
 		}
-		
+
 		return false;
 	});
-	
-	
-	
-	//thumb.hover(function(){		
+
+
+
+	//thumb.hover(function(){
 	//	if($(this).hasClass("opacity") == false){
 	//		$(this).children(".title").show();
 	//	}
 	//},function(){
 	//		$(this).children(".title").hide();
 	//});
-	
-	
 
-	showPrev.click(function(){		
+
+
+	showPrev.click(function(){
 		index = index-1;
-		
+
 		var imageUrl = thumb.eq(index).attr("href");
-		
+
 		$("<img/>").attr("src", imageUrl).load(function(){
 			imageWidth = this.width;
 			imageHeight = this.height;
-			
+
 			//marginTopBottom = Math.floor(imageHeight / 2);
 			marginLeftRight = Math.floor(imageWidth / 2);
 			marginTopPrevNext = Math.floor((imageHeight / 2) - (30 / 2));
-						
+
 			show.animate({
 				width: imageWidth + "px",
 				height: imageHeight + "px",
@@ -97,33 +97,33 @@ $(function() {
 			}, 500);
 
 			show.css("background", "url("+imageUrl+") no-repeat top center");
-			
+
 			showPrevBtn.css("margin-top", marginTopPrevNext + "px");
 			showNextBtn.css("margin-top", marginTopPrevNext + "px");
-						
+
 		});
-		
+
 		showNext.show();
 		if(index == 0){
 			showPrev.hide();
 		}
 	})
-	
-	
-		
-	showNext.click(function(){		
+
+
+
+	showNext.click(function(){
 		index = index+1;
-		
+
 		var imageUrl = thumb.eq(index).attr("href");
-		
+
 		$("<img/>").attr("src", imageUrl).load(function(){
 			imageWidth = this.width;
 			imageHeight = this.height;
-			
+
 			//marginTopBottom = Math.floor(imageHeight / 2);
 			marginLeftRight = Math.floor(imageWidth / 2);
 			marginTopPrevNext = Math.floor((imageHeight / 2) - (30 / 2));
-						
+
 			show.animate({
 				width: imageWidth + "px",
 				height: imageHeight + "px",
@@ -132,20 +132,20 @@ $(function() {
 			}, 500);
 
 			show.css("background", "url("+imageUrl+") no-repeat top center");
-			
+
 			showPrevBtn.css("margin-top", marginTopPrevNext + "px");
 			showNextBtn.css("margin-top", marginTopPrevNext + "px");
-						
+
 		});
-		
+
 		showPrev.show();
 		if(index == thumbCount-1){
 			showNext.hide();
 		}
 	})
-	
-	
-	
+
+
+
 	showClose.click(function(){
 		overlay.hide();
 		show.hide();
@@ -153,5 +153,5 @@ $(function() {
 		showNext.show();
 		thumb.removeClass("opacity");
 	});
-	
+
 });
